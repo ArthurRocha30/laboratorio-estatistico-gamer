@@ -1,115 +1,107 @@
-# 🎮 Laboratório de Estatística — Video Game Sales
+# Laboratorio de Estatistica - Video Game Sales
 
-Aplicação interativa em Streamlit para explorar estatística descritiva,
-probabilidade, distribuições, correlação e regressão linear sobre um
-dataset real de vendas de jogos, usando uma **biblioteca estatística
-própria** (`minhastats`), implementada do zero e validada por testes
-automatizados contra NumPy/SciPy.
+Trabalho da disciplina de Matematica e Estatistica.
 
-## Sumário
+A gente escolheu um dataset real de vendas de jogos de video game e criou uma
+aplicacao onde da para explorar os dados de forma interativa. **Todas as contas
+de estatistica foram escritas por nós**, do zero, a partir das formulas - o
+NumPy e o SciPy sao usados apenas nos testes, para conferir se as nossas contas
+estao certas.
 
-- [Dataset](#dataset)
-- [Estrutura do repositório](#estrutura-do-repositório)
-- [Como rodar do zero](#como-rodar-do-zero)
-- [Rodando os testes](#rodando-os-testes)
-- [Módulos da aplicação](#módulos-da-aplicação)
-- [Regra de ouro](#regra-de-ouro)
+## Arquivos do projeto
 
-## Dataset
+| Arquivo | O que é |
+|---|---|
+| `minhastats.py` | **Modulo 1** - nossa biblioteca de estatistica (todas as formulas) |
+| `test_minhastats.py` | Testes automatizados comparando nossas funcoes com NumPy/SciPy |
+| `app.py` | A aplicacao (Modulos 0, 2, 3, 4, 5 e 6) |
+| `data/vgsales.csv` | O dataset (16.598 jogos) |
+| `RELATORIO.md` | Relatorio com as formulas, as decisoes e as 3 descobertas |
+| `requirements.txt` | Lista de bibliotecas necessarias |
 
-**[Video Game Sales](https://www.kaggle.com/datasets/gregorut/videogamesales)**
-— 16.598 jogos com vendas por região, plataforma, gênero e publicadora
-(originado de uma raspagem do site VGChartz). O arquivo já está incluído em
-[`data/vgsales.csv`](data/vgsales.csv), então não é necessário baixar nada
-separadamente.
+## O dataset
 
-- Variáveis numéricas: `Year`, `NA_Sales`, `EU_Sales`, `JP_Sales`,
-  `Other_Sales`, `Global_Sales`.
-- Variáveis categóricas: `Platform`, `Genre`, `Publisher`.
+[Video Game Sales](https://www.kaggle.com/datasets/gregorut/videogamesales) (Kaggle) -
+vendas de jogos coletadas do site VGChartz.
 
-## Estrutura do repositório
+- **16.598 registros** (jogos)
+- **6 variaveis numericas:** `Year`, `NA_Sales`, `EU_Sales`, `JP_Sales`, `Other_Sales`, `Global_Sales`
+- **3 variaveis categoricas:** `Platform`, `Genre`, `Publisher`
 
-```
-projeto-matematica/
-├── data/
-│   └── vgsales.csv            # dataset real (Módulo 0)
-├── minhastats/                # Módulo 1: núcleo estatístico próprio
-│   ├── descritiva.py          #   média, mediana, moda, variância, quartis...
-│   ├── correlacao.py          #   covariância, Pearson, regressão linear
-│   └── distribuicoes.py       #   Normal, Binomial, Poisson, Uniforme, Exponencial
-├── app/                       # aplicação Streamlit (Módulos 0, 2–6)
-│   ├── main.py                #   ponto de entrada / navegação
-│   ├── utils.py                #   carregamento de dados, tabelas de frequência, outliers
-│   ├── modulo0_dados.py
-│   ├── modulo2_descritiva.py
-│   ├── modulo3_simulacao.py
-│   ├── modulo4_distribuicoes.py
-│   ├── modulo5_regressao.py
-│   └── modulo6_relatorio.py
-├── tests/
-│   └── test_minhastats.py     # pytest comparando minhastats com NumPy/SciPy
-├── relatorio/
-│   └── RELATORIO.md           # fórmulas, decisões de projeto e as 3 descobertas
-├── requirements.txt
-├── pytest.ini
-└── README.md
-```
+O arquivo ja esta na pasta `data/`, nao precisa baixar nada.
 
-## Como rodar do zero
+## Como rodar
 
-Pré-requisito: **Python 3.10+** instalado.
+Precisa ter o **Python 3.10 ou mais novo** instalado.
+
+**1. Baixar o projeto**
 
 ```bash
-# 1. Clone o repositório
-git clone <url-do-repositorio>
+git clone <link-do-repositorio>
 cd projeto-matematica
-
-# 2. Crie e ative um ambiente virtual
-python -m venv .venv
-# Windows (PowerShell):
-.venv\Scripts\Activate.ps1
-# Linux/macOS:
-source .venv/bin/activate
-
-# 3. Instale as dependências
-pip install -r requirements.txt
-
-# 4. Rode a aplicação
-streamlit run app/main.py
 ```
 
-A aplicação abre em `http://localhost:8501`. Use o menu lateral para navegar
-entre os módulos.
+**2. Criar o ambiente virtual e ativar**
 
-## Rodando os testes
+```bash
+python -m venv .venv
+```
+
+No Windows (PowerShell):
+```bash
+.venv\Scripts\Activate.ps1
+```
+
+No Linux ou Mac:
+```bash
+source .venv/bin/activate
+```
+
+**3. Instalar as bibliotecas**
+
+```bash
+pip install -r requirements.txt
+```
+
+**4. Abrir a aplicacao**
+
+```bash
+streamlit run app.py
+```
+
+O navegador abre sozinho em `http://localhost:8501`. Use o menu da esquerda
+para trocar de modulo.
+
+## Como rodar os testes
 
 ```bash
 pytest -v
 ```
 
-Isso executa `tests/test_minhastats.py`, que compara cada função de
-`minhastats` (média, mediana, moda, variância, desvio padrão, percentis,
-covariância, correlação de Pearson, regressão linear e as distribuições
-teóricas) com o resultado de referência do **NumPy**/**SciPy**, incluindo
-casos com o dataset real do laboratório.
+Sao 34 testes. Cada um pega uma funcao nossa, faz a mesma conta com NumPy ou
+SciPy e confere se o resultado bate (a diferenca tem que ser menor que
+0,0000000001). Se todos passarem, nossas formulas estao corretas.
 
-## Módulos da aplicação
+## O que tem em cada modulo
 
-| Módulo | Conteúdo |
-|---|---|
-| 0 — Dados Reais | Apresentação do dataset, dicionário de variáveis, valores ausentes |
-| 1 — Núcleo Estatístico | Biblioteca `minhastats/` + testes em `tests/` (não é uma página, é a base de tudo) |
-| 2 — Estatística Descritiva | Tabela de frequências, medidas, histograma/boxplot/barras/pizza, outliers (IQR), interpretação automática |
-| 3 — Probabilidade e Simulação | Monte Carlo: Lei dos Grandes Números (moeda/dado) e Teorema Central do Limite (médias amostrais do dataset) |
-| 4 — Distribuições Teóricas | Sobreposição de Normal + Binomial/Poisson/Uniforme/Exponencial ao histograma, parâmetros estimados dos dados |
-| 5 — Correlação e Regressão | Dispersão, correlação de Pearson, reta de mínimos quadrados, R², predição interativa |
-| 6 — Relatório de Descobertas | As 3 descobertas estatísticas, recalculadas em tempo real (texto completo em `relatorio/RELATORIO.md`) |
+- **Modulo 0 - Dados Reais:** apresenta o dataset, explica cada coluna e mostra onde faltam dados.
+- **Modulo 1 - Nossas funcoes:** é o arquivo `minhastats.py` (media, mediana, moda, amplitude,
+  variancia, desvio padrao, quartis, percentis, coeficiente de variacao, covariancia,
+  correlacao de Pearson, regressao linear e as distribuicoes teoricas).
+- **Modulo 2 - Estatistica Descritiva:** escolhe uma variavel e mostra a tabela de frequencias,
+  todas as medidas, histograma, boxplot (ou barras e pizza, se for categorica), os outliers
+  pela regra do IQR e uma interpretacao escrita automaticamente.
+- **Modulo 3 - Probabilidade e Simulacao:** simulacao de Monte Carlo da Lei dos Grandes Numeros
+  (moeda e dado) e do Teorema Central do Limite (medias de amostras do dataset).
+- **Modulo 4 - Distribuicoes Teoricas:** coloca a curva Normal e mais uma curva (Exponencial ou
+  Uniforme) por cima do histograma, com os parametros estimados dos proprios dados.
+- **Modulo 5 - Correlacao e Regressao:** escolhe duas variaveis e mostra o grafico de dispersao,
+  a correlacao, a reta de minimos quadrados, a equacao, o R² e um campo para fazer previsoes.
+- **Modulo 6 - Descobertas:** as 3 coisas mais interessantes que descobrimos.
 
 ## Regra de ouro
 
-Pandas e NumPy são usados **apenas** para carregar/filtrar o CSV e gerar
-números aleatórios nas simulações de Monte Carlo. **Toda medida estatística
-exibida ao usuário** (média, mediana, moda, variância, desvio padrão,
-quartis, coeficiente de variação, covariância, correlação, coeficientes de
-regressão, densidades de distribuições) vem das funções implementadas em
-`minhastats/`, validadas em `tests/test_minhastats.py`.
+O pandas so é usado para **ler o CSV e filtrar as colunas**. Toda medida que
+aparece na tela (media, mediana, variancia, correlacao, coeficientes da reta...)
+é calculada pelas funcoes do `minhastats.py`, que foram escritas por nós e
+validadas nos testes.
