@@ -48,7 +48,7 @@ def render():
     fig.add_trace(go.Scatter(x=x, y=y, mode="markers", name="Observações", opacity=0.5))
     fig.add_trace(go.Scatter(x=xs_linha, y=ys_linha, mode="lines", name="Reta de mínimos quadrados", line=dict(color="red")))
     fig.update_layout(title=f"{var_y} em função de {var_x}", xaxis_title=var_x, yaxis_title=var_y)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     sinal = "+" if a >= 0 else "−"
     st.subheader("Equação da reta")

@@ -86,7 +86,7 @@ def render():
             st.warning("Não foi possível estimar parâmetros Binomiais razoáveis para esta variável (requer variância < média).")
 
     fig.update_layout(title=f"Ajuste de distribuições teóricas — {coluna}", xaxis_title=coluna, yaxis_title="Densidade")
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     st.subheader("Discussão sobre a qualidade do ajuste")
     assimetria_aprox = (media - ms.mediana(dados_lista)) / desvio if desvio > 0 else 0

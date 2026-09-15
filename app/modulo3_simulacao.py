@@ -43,7 +43,7 @@ def _lei_dos_grandes_numeros():
         xaxis_title="Número de lançamentos",
         yaxis_title="Frequência relativa acumulada",
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     st.info(
         f"Após {n_lancamentos:,} lançamentos, a frequência relativa observada foi "
@@ -110,7 +110,7 @@ def _teorema_central_do_limite(df):
         xaxis_title=f"Média amostral de {coluna}",
         yaxis_title="Densidade",
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     c1, c2, c3 = st.columns(3)
     c1.metric("Média da população", f"{media_pop:,.4f}")

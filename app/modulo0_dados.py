@@ -28,7 +28,7 @@ def render():
     col3.metric("Variáveis categóricas", len(categoricas))
 
     st.subheader("Amostra dos dados")
-    st.dataframe(df.head(20), use_container_width=True)
+    st.dataframe(df.head(20), width="stretch")
 
     st.subheader("Dicionário de variáveis")
     dicionario = {
@@ -58,7 +58,7 @@ def render():
     if ausentes.empty:
         st.success("Não há valores ausentes no dataset.")
     else:
-        st.dataframe(ausentes.rename("Valores ausentes"), use_container_width=True)
+        st.dataframe(ausentes.rename("Valores ausentes"), width="stretch")
         st.caption(
             "As páginas seguintes removem automaticamente valores ausentes da "
             "variável selecionada antes de calcular qualquer medida."

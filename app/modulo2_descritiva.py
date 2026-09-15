@@ -63,19 +63,19 @@ def _render_numerica(df, coluna: str):
     st.subheader("Tabela de frequências (em classes)")
     n_classes = st.slider("Número de classes", min_value=3, max_value=30, value=10, key=f"classes_{coluna}")
     tabela = tabela_frequencias_numerica(dados, n_classes)
-    st.dataframe(tabela, use_container_width=True)
+    st.dataframe(tabela, width="stretch")
 
     st.subheader("Gráficos")
     col_hist, col_box = st.columns(2)
     with col_hist:
         fig_hist = px.histogram(x=dados, nbins=n_classes, title=f"Histograma — {coluna}")
         fig_hist.update_layout(xaxis_title=coluna, yaxis_title="Frequência")
-        st.plotly_chart(fig_hist, use_container_width=True)
+        st.plotly_chart(fig_hist, width="stretch")
     with col_box:
         fig_box = go.Figure()
         fig_box.add_trace(go.Box(x=dados, name=coluna, boxpoints="outliers"))
         fig_box.update_layout(title=f"Boxplot — {coluna}")
-        st.plotly_chart(fig_box, use_container_width=True)
+        st.plotly_chart(fig_box, width="stretch")
 
     st.subheader("Detecção de outliers (regra do IQR)")
     outliers, limite_inf, limite_sup = detectar_outliers_iqr(dados)
@@ -100,16 +100,16 @@ def _render_categorica(df, coluna: str):
     tabela_top = tabela.head(top_n)
 
     st.subheader("Tabela de frequências")
-    st.dataframe(tabela, use_container_width=True)
+    st.dataframe(tabela, width="stretch")
 
     st.subheader("Gráficos")
     col_bar, col_pie = st.columns(2)
     with col_bar:
         fig_bar = px.bar(tabela_top, x="Categoria", y="Frequência", title=f"Barras — {coluna} (top {top_n})")
-        st.plotly_chart(fig_bar, use_container_width=True)
+        st.plotly_chart(fig_bar, width="stretch")
     with col_pie:
         fig_pie = px.pie(tabela_top, names="Categoria", values="Frequência", title=f"Pizza — {coluna} (top {top_n})")
-        st.plotly_chart(fig_pie, use_container_width=True)
+        st.plotly_chart(fig_pie, width="stretch")
 
     moda_texto = tabela.iloc[0]["Categoria"]
     st.info(
