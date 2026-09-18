@@ -615,9 +615,9 @@ def modulo_5_regressao():
 
     st.subheader("Equacao da reta")
     if a >= 0:
-        st.latex(f"\\hat{{y}} = {b:.4f} \\cdot x + {a:.4f}")
+        st.write(f"### y previsto = {b:.4f} * x + {a:.4f}")
     else:
-        st.latex(f"\\hat{{y}} = {b:.4f} \\cdot x - {abs(a):.4f}")
+        st.write(f"### y previsto = {b:.4f} * x - {abs(a):.4f}")
 
     # --- predicao interativa ---
     st.subheader("Faca uma previsao")
