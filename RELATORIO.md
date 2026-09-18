@@ -27,6 +27,12 @@ Decidimos **nao apagar essas linhas do dataset inteiro**: a gente tira os valore
 apenas da variavel que esta sendo analisada no momento (funcao `pegar_valores` no `app.py`).
 Assim nao perdemos dados de vendas por causa de um ano faltando.
 
+**Uma inconsistencia que encontramos:** a ultima linha do arquivo tem `Rank = 16600`,
+mas o dataset tem 16.598 registros - ou seja, existem posicoes de ranking que nao
+aparecem no arquivo. Isso nao afeta nenhuma analise nossa, porque em nenhum momento
+usamos a coluna `Rank` (ela e so o numero da posicao, nao uma medida), mas achamos
+importante registrar que conferimos.
+
 ---
 
 ## 2. Como o projeto foi organizado
@@ -159,7 +165,7 @@ Comparando as vendas na Europa (X) com as vendas na America do Norte (Y):
 | Medida | Valor |
 |---|---|
 | Correlacao de Pearson (r) | 0,768 (forte e positiva) |
-| Reta de regressao | ŷ = 1,2407·x + 0,0827 |
+| Reta de regressao | y previsto = 1,2407 * x + 0,0827 |
 | R² | 0,589 |
 
 O R² de 0,589 quer dizer que **58,9%** da variacao das vendas na America do Norte é
@@ -194,3 +200,22 @@ a gente escreve a variancia linha por linha e o resultado bate com o NumPy na de
 decimal, fica claro o que cada pedaco da formula faz. E aplicar isso em dados reais mostrou
 coisas que nao dava para ver so olhando a tabela - como o fato da media de vendas ser
 enganosa, ou a curva Normal aparecer do nada quando trabalhamos com medias.
+
+Tres licoes que ficaram deste laboratorio:
+
+1. **Uma medida sozinha mente.** A media de vendas (0,537 milhao) parece dizer alguma
+   coisa, mas comparada com a mediana (0,170) revela que a distribuicao e torta.
+   So olhando media, mediana, quartis e coeficiente de variacao **juntos** e que da
+   para entender o formato dos dados.
+
+2. **Correlacao alta nao explica o porque.** O r de 0,768 entre vendas na Europa e nos
+   EUA e forte, mas a explicacao ("o jogo ser famoso") e uma terceira variavel que nao
+   esta em nenhuma coluna do dataset. O numero mostra O QUE acontece, nao POR QUE.
+
+3. **Testar mudou nossa confianca no codigo.** Foram os testes que nos obrigaram a
+   entender detalhes que a gente teria passado batido - por exemplo, que existe mais de
+   um metodo para calcular percentil, e que precisavamos escolher o mesmo do NumPy para
+   os resultados baterem.
+
+**Conferencia final:** todos os numeros da secao 5 foram recalculados pela propria
+aplicacao (Modulo 6, que refaz as contas ao vivo) e conferem com o que esta escrito aqui.
