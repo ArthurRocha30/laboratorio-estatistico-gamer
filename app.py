@@ -11,7 +11,6 @@ que nós escrevemos em minhastats.py.
 Para rodar:  streamlit run app.py
 """
 
-import os
 import random
 
 import matplotlib.pyplot as plt
@@ -25,16 +24,14 @@ import minhastats as ms
 # ----------------------------------------------------------
 st.set_page_config(page_title="Laboratorio de Estatistica", page_icon="🎮", layout="wide")
 
-# caminho do CSV (montado a partir da pasta onde este arquivo esta,
-# para funcionar mesmo se o streamlit for aberto de outra pasta)
-PASTA_DO_PROJETO = os.path.dirname(os.path.abspath(__file__))
-CAMINHO_DO_CSV = os.path.join(PASTA_DO_PROJETO, "data", "vgsales.csv")
+# caminho do CSV. E um caminho relativo, entao o streamlit precisa ser
+# aberto de dentro da pasta do projeto (é o que o README manda fazer).
+CAMINHO_DO_CSV = "data/vgsales.csv"
 
 COLUNAS_NUMERICAS = ["Year", "NA_Sales", "EU_Sales", "JP_Sales", "Other_Sales", "Global_Sales"]
 COLUNAS_CATEGORICAS = ["Platform", "Genre", "Publisher"]
 
 
-@st.cache_data  # guarda o resultado na memoria para nao reler o CSV toda hora
 def carregar_dados():
     return pd.read_csv(CAMINHO_DO_CSV)
 

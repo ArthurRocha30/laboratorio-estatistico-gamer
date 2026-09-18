@@ -4,7 +4,7 @@ minhastats.py
 
 Biblioteca de estatistica feita pelo nosso grupo (Modulo 1).
 
-Todas as funcoes foram escritas "na mao", a partir das formulas.
+Todas as funcoes foram escritas na mao, a partir das formulas.
 Nao usamos nenhuma funcao pronta de estatistica (nada de numpy.mean,
 numpy.std, statistics.media, scipy.stats...). Usamos apenas o modulo
 `math` da biblioteca padrao do Python (para raiz quadrada, exponencial e pi).
