@@ -113,7 +113,7 @@ Todo valor fora desses limites é marcado como outlier.
 
 ## 4. Como validamos (tolerancia numerica)
 
-Rodando `pytest -v` sao executados **34 testes**. Cada teste faz a mesma conta de dois
+Rodando `pytest -v` sao executados **38 testes**. Cada teste faz a mesma conta de dois
 jeitos - com a nossa funcao e com o NumPy/SciPy - e confere se a diferenca é minuscula.
 
 Nao da para usar `==` porque o computador guarda numeros com casas decimais de forma

@@ -81,7 +81,7 @@ para trocar de modulo.
 pytest -v
 ```
 
-Sao 34 testes. Cada um pega uma funcao nossa, faz a mesma conta com NumPy ou
+Sao 38 testes. Cada um pega uma funcao nossa, faz a mesma conta com NumPy ou
 SciPy e confere se o resultado bate (a diferenca tem que ser menor que
 0,0000000001). Se todos passarem, nossas formulas estao corretas.
 

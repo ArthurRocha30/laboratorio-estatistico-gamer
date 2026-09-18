@@ -258,3 +258,32 @@ def test_correlacao_no_dataset_real():
     vendas_na = tabela["NA_Sales"].tolist()
     esperado = np.corrcoef(vendas_eu, vendas_na)[0][1]
     assert abs(ms.correlacao(vendas_eu, vendas_na) - esperado) < TOLERANCIA_GRANDE
+
+
+def test_amplitude_no_dataset_real():
+    vendas = carregar_vendas()
+    esperado = np.max(vendas) - np.min(vendas)
+    assert abs(ms.amplitude(vendas) - esperado) < TOLERANCIA_GRANDE
+
+
+def test_mediana_no_dataset_real():
+    vendas = carregar_vendas()
+    assert abs(ms.mediana(vendas) - np.median(vendas)) < TOLERANCIA_GRANDE
+
+
+def test_coeficiente_variacao_no_dataset_real():
+    vendas = carregar_vendas()
+    esperado = (np.std(vendas, ddof=1) / np.mean(vendas)) * 100
+    assert abs(ms.coeficiente_variacao(vendas) - esperado) < TOLERANCIA_GRANDE
+
+
+def test_regressao_linear_no_dataset_real():
+    tabela = pd.read_csv("data/vgsales.csv")
+    vendas_eu = tabela["EU_Sales"].tolist()
+    vendas_na = tabela["NA_Sales"].tolist()
+
+    a, b = ms.regressao_linear(vendas_eu, vendas_na)
+    referencia = stats.linregress(vendas_eu, vendas_na)
+
+    assert abs(b - referencia.slope) < TOLERANCIA_GRANDE       # inclinacao
+    assert abs(a - referencia.intercept) < TOLERANCIA_GRANDE   # intercepto
