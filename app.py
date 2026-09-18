@@ -83,6 +83,7 @@ def tabela_de_frequencias_por_classes(valores, numero_de_classes):
 
 def tabela_de_frequencias_categorica(valores):
     """Conta quantas vezes cada categoria aparece (ex.: quantos jogos de Acao)."""
+    # 1) conta quantas vezes cada categoria aparece
     contagem = {}
     for valor in valores:
         if valor in contagem:
@@ -90,16 +91,26 @@ def tabela_de_frequencias_categorica(valores):
         else:
             contagem[valor] = 1
 
-    linhas = []
+    # 2) monta uma lista de pares (frequencia, categoria) para poder ordenar.
+    #    o sorted() com reverse=True ordena pelo primeiro item do par, ou seja,
+    #    da maior frequencia para a menor.
+    pares = []
     for categoria in contagem:
+        pares.append((contagem[categoria], categoria))
+    pares = sorted(pares, reverse=True)
+
+    # 3) monta as linhas da tabela ja na ordem certa
+    linhas = []
+    for par in pares:
+        frequencia = par[0]
+        categoria = par[1]
         linhas.append({
             "Categoria": categoria,
-            "Frequencia": contagem[categoria],
-            "Frequencia relativa (%)": round(contagem[categoria] / len(valores) * 100, 2),
+            "Frequencia": frequencia,
+            "Frequencia relativa (%)": round(frequencia / len(valores) * 100, 2),
         })
 
-    tabela = pd.DataFrame(linhas)
-    return tabela.sort_values("Frequencia", ascending=False).reset_index(drop=True)
+    return pd.DataFrame(linhas)
 
 
 def encontrar_outliers(valores):
