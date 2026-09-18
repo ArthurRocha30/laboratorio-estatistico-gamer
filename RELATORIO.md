@@ -7,8 +7,12 @@
 
 ## 1. O dataset
 
-- **Fonte:** [Video Game Sales - Kaggle](https://www.kaggle.com/datasets/gregorut/videogamesales)
-  (dados coletados do site VGChartz)
+- **Fonte:** [Video Game Sales](https://www.kaggle.com/datasets/gregorut/videogamesales) - dataset publicado no Kaggle
+  pelo usuario gregorut, com dados originados de uma raspagem do site VGChartz.
+  Como o Kaggle exige login para baixar, pegamos o mesmo CSV num espelho
+  publico no GitHub (os numeros sao identicos ao do Kaggle). Vale registrar
+  que, por vir do VGChartz, sao **estimativas** de vendas e nao numeros
+  oficiais divulgados pelas empresas.
 - **Tema:** jogos
 - **Quantidade de registros:** 16.598 jogos
 - **Variaveis numericas (6):** `Year`, `NA_Sales`, `EU_Sales`, `JP_Sales`, `Other_Sales`, `Global_Sales`

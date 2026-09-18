@@ -21,8 +21,11 @@ estao certas.
 
 ## O dataset
 
-[Video Game Sales](https://www.kaggle.com/datasets/gregorut/videogamesales) (Kaggle) -
-vendas de jogos coletadas do site VGChartz.
+[Video Game Sales](https://www.kaggle.com/datasets/gregorut/videogamesales) (publicado no Kaggle pelo usuario gregorut) - vendas de jogos, resultado de
+uma raspagem do site VGChartz. Baixamos o CSV de um espelho publico no GitHub
+(o Kaggle exige login para baixar direto), entao os numeros sao os mesmos, so
+a forma de baixar que foi diferente. Importante: como vem do VGChartz, sao
+**estimativas** de vendas, nao numeros oficiais divulgados pelas publicadoras.
 
 - **16.598 registros** (jogos)
 - **6 variaveis numericas:** `Year`, `NA_Sales`, `EU_Sales`, `JP_Sales`, `Other_Sales`, `Global_Sales`
