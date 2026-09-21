@@ -2,11 +2,38 @@
 
 Trabalho da disciplina de Matematica e Estatistica.
 
-A gente escolheu um dataset real de vendas de jogos de video game e criou uma
+| | |
+|---|---|
+| **Aluno** | Arthur Morais de Carvalho Rocha |
+| **Matricula** | 72650520 |
+
+Escolhi um dataset real de vendas de jogos de video game e criou uma
 aplicacao onde da para explorar os dados de forma interativa. **Todas as contas
 de estatistica foram escritas por nós**, do zero, a partir das formulas - o
 NumPy e o SciPy sao usados apenas nos testes, para conferir se as nossas contas
 estao certas.
+
+## A aplicacao funcionando
+
+### Modulo 2 - Estatistica Descritiva
+Todas as medidas (media, mediana, moda, variancia, desvio padrao, quartis e
+coeficiente de variacao) calculadas pelo `minhastats.py`, com deteccao de
+outliers pela regra do IQR e interpretacao automatica.
+
+![Modulo 2 - medidas](imagens/modulo2-medidas.png)
+
+![Modulo 2 - graficos](imagens/modulo2-graficos.png)
+
+### Modulo 3 - Teorema Central do Limite
+Simulacao de Monte Carlo: conforme o tamanho da amostra cresce, a distribuicao
+das medias amostrais se aproxima da curva Normal.
+
+![Modulo 3 - TCL](imagens/modulo3-tcl.png)
+
+### Modulo 5 - Correlacao e Regressao
+Diagrama de dispersao, reta de minimos quadrados, R² e predicao interativa.
+
+![Modulo 5 - regressao](imagens/modulo5-regressao.png)
 
 ## Arquivos do projeto
 

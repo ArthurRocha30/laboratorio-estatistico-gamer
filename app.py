@@ -150,7 +150,7 @@ def modulo_0_dados():
         **Dataset:** [Video Game Sales](https://www.kaggle.com/datasets/gregorut/videogamesales) (Kaggle)
 
         Sao vendas de jogos de video game no mundo todo, coletadas do site VGChartz.
-        Escolhemos esse dataset porque o tema (jogos) é do interesse do grupo e ele
+        Escolhi esse dataset porque o tema (jogos) é do meu interesse e ele
         tem bastante variavel numerica e categorica para analisar.
         """
     )

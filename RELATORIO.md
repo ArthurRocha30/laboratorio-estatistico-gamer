@@ -1,5 +1,6 @@
 # Relatorio - Laboratorio de Estatistica
 
+**Aluno:** Arthur Morais de Carvalho Rocha - **Matricula:** 72650520
 **Disciplina:** Matematica e Estatistica
 **Dataset escolhido:** Video Game Sales (vendas de jogos de video game)
 
@@ -19,7 +20,7 @@
   (as vendas estao em milhoes de copias)
 - **Variaveis categoricas (3):** `Platform`, `Genre`, `Publisher`
 
-**Por que escolhemos:** o tema jogos é do interesse do grupo e o dataset atende todos os
+**Por que escolhi:** o tema jogos é do meu interesse e o dataset atende todos os
 requisitos (mais de 1.000 registros, mais de 4 variaveis numericas e mais de 2 categoricas).
 
 **Valores faltando:** 271 jogos estao sem o ano de lancamento e 58 estao sem a publicadora.
@@ -135,7 +136,88 @@ Exemplos do que é comparado: `media` x `numpy.mean`, `variancia` x `numpy.var(d
 
 ---
 
-## 5. As 3 descobertas
+## 5. Explicacao de cada modulo
+
+### Modulo 0 - Dados Reais
+Apresenta o dataset: quantidade de registros, dicionario explicando o que e cada
+coluna e o levantamento de valores faltando (271 jogos sem ano, 58 sem
+publicadora). Serve para o usuario entender com o que esta lidando antes de
+analisar.
+
+![Modulo 0](imagens/modulo0-dados.png)
+
+### Modulo 1 - Nucleo estatistico
+Nao e uma tela: e o arquivo `minhastats.py`, que contem todas as formulas
+implementadas do zero, e o `test_minhastats.py`, com os 38 testes que validam
+cada funcao contra o NumPy/SciPy. Esta detalhado nas secoes 3 e 4 deste
+relatorio.
+
+![Testes passando](imagens/testes-pytest.png)
+
+### Modulo 2 - Estatistica Descritiva Interativa
+O usuario escolhe uma variavel e recebe:
+- **tabela de frequencias** (em classes, quando a variavel e continua);
+- **medidas de tendencia central e dispersao**, todas vindas do `minhastats.py`,
+  com uma caixinha para alternar entre amostral e populacional;
+- **graficos adequados ao tipo**: histograma e boxplot para numericas, barras e
+  pizza para categoricas;
+- **deteccao de outliers** pela regra do IQR, mostrando os limites calculados;
+- **interpretacao automatica** em texto, que compara media e mediana para
+  detectar assimetria e classifica a dispersao pelo coeficiente de variacao.
+
+![Modulo 2 - medidas](imagens/modulo2-medidas.png)
+
+![Modulo 2 - graficos](imagens/modulo2-graficos.png)
+
+### Modulo 3 - Probabilidade e Simulacao
+Dois experimentos de Monte Carlo, ambos com parametros controlaveis pelo usuario:
+
+**(a) Lei dos Grandes Numeros** - simula lancamentos de moeda ou dado e mostra a
+frequencia relativa acumulada convergindo para a probabilidade teorica conforme o
+numero de lancamentos cresce.
+
+**(b) Teorema Central do Limite** - sorteia amostras repetidas de uma variavel do
+dataset, calcula a media de cada uma com o nosso `minhastats.media` e mostra a
+distribuicao dessas medias se aproximando da Normal conforme o tamanho da amostra
+aumenta. O desvio padrao das medias simuladas e comparado com o erro padrao
+teorico (sigma / raiz de n).
+
+![Modulo 3 - Lei dos Grandes Numeros](imagens/modulo3-lgn.png)
+
+![Modulo 3 - TCL](imagens/modulo3-tcl.png)
+
+### Modulo 4 - Distribuicoes Teoricas
+Sobrepoe ao histograma da variavel a curva **Normal** (sempre) mais uma segunda
+distribuicao escolhida pelo usuario (**Exponencial** ou **Uniforme**), com os
+parametros estimados a partir dos proprios dados pelo metodo dos momentos - por
+exemplo, a taxa da Exponencial e estimada como 1 / media. Abaixo do grafico, um
+texto discute a qualidade do ajuste comparando media e mediana.
+
+A Binomial e a Poisson tambem estao implementadas e testadas no `minhastats.py`,
+mas nao aparecem nesta tela porque sao distribuicoes discretas (para contagens), e
+as variaveis deste dataset sao continuas.
+
+![Modulo 4](imagens/modulo4-distribuicoes.png)
+
+### Modulo 5 - Correlacao e Regressao Linear
+O usuario escolhe duas variaveis numericas e recebe o diagrama de dispersao, o
+coeficiente de correlacao de Pearson, a reta de minimos quadrados com os
+coeficientes calculados pelo nosso codigo, a equacao da reta, o R² e um campo de
+predicao interativa. Inclui a interpretacao dos coeficientes e um alerta fixo de
+que correlacao nao implica causalidade.
+
+![Modulo 5](imagens/modulo5-regressao.png)
+
+### Modulo 6 - Relatorio de Descobertas
+Mostra as 3 descobertas da secao 6 deste relatorio com os numeros **recalculados
+ao vivo** pela biblioteca a cada carregamento da pagina - ou seja, nao sao valores
+digitados no texto, sao o resultado das funcoes rodando sobre o dataset.
+
+![Modulo 6](imagens/modulo6-descobertas.png)
+
+---
+
+## 6. As 3 descobertas
 
 ### Descoberta 1 - Pouquissimos jogos vendem muito
 
@@ -193,7 +275,7 @@ tamanho da amostra na aplicacao.
 
 ---
 
-## 6. Conclusao
+## 7. Conclusao
 
 O trabalho mostrou na pratica que as formulas da estatistica nao sao caixas-pretas: quando
 a gente escreve a variancia linha por linha e o resultado bate com o NumPy na decima casa
@@ -217,5 +299,5 @@ Tres licoes que ficaram deste laboratorio:
    um metodo para calcular percentil, e que precisavamos escolher o mesmo do NumPy para
    os resultados baterem.
 
-**Conferencia final:** todos os numeros da secao 5 foram recalculados pela propria
+**Conferencia final:** todos os numeros da secao 6 foram recalculados pela propria
 aplicacao (Modulo 6, que refaz as contas ao vivo) e conferem com o que esta escrito aqui.

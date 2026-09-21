@@ -2,7 +2,7 @@
 minhastats.py
 =============
 
-Biblioteca de estatistica feita pelo nosso grupo (Modulo 1).
+Biblioteca de estatistica escrita por mim para este trabalho (Modulo 1).
 
 Todas as funcoes foram escritas na mao, a partir das formulas.
 Nao usamos nenhuma funcao pronta de estatistica (nada de numpy.mean,
