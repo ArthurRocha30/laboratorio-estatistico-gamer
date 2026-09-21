@@ -7,33 +7,67 @@ Trabalho da disciplina de Matematica e Estatistica.
 | **Aluno** | Arthur Morais de Carvalho Rocha |
 | **Matricula** | 72650520 |
 
-Escolhi um dataset real de vendas de jogos de video game e criou uma
+Escolhi um dataset real de vendas de jogos de video game e criei uma
 aplicacao onde da para explorar os dados de forma interativa. **Todas as contas
-de estatistica foram escritas por nós**, do zero, a partir das formulas - o
-NumPy e o SciPy sao usados apenas nos testes, para conferir se as nossas contas
+de estatistica foram escritas por mim**, do zero, a partir das formulas - o
+NumPy e o SciPy sao usados apenas nos testes, para conferir se as minhas contas
 estao certas.
 
 ## A aplicacao funcionando
 
+### Modulo 0 - Os dados
+16.598 jogos, com o dicionario de cada coluna e o levantamento de valores faltando.
+
+![Modulo 0 - dados](imagens/modulo0-dados.png)
+
 ### Modulo 2 - Estatistica Descritiva
-Todas as medidas (media, mediana, moda, variancia, desvio padrao, quartis e
-coeficiente de variacao) calculadas pelo `minhastats.py`, com deteccao de
-outliers pela regra do IQR e interpretacao automatica.
+Medidas de tendencia central, dispersao e quartis, todas calculadas pelo
+`minhastats.py`, mais a interpretacao escrita automaticamente.
 
 ![Modulo 2 - medidas](imagens/modulo2-medidas.png)
 
+Histograma e boxplot (aqui da variavel `Year`):
+
 ![Modulo 2 - graficos](imagens/modulo2-graficos.png)
 
-### Modulo 3 - Teorema Central do Limite
-Simulacao de Monte Carlo: conforme o tamanho da amostra cresce, a distribuicao
-das medias amostrais se aproxima da curva Normal.
+Para variaveis categoricas, barras e pizza:
+
+![Modulo 2 - categorica](imagens/modulo2-categorica.png)
+
+Deteccao de outliers pela regra do IQR:
+
+![Modulo 2 - outliers](imagens/modulo2-outliers.png)
+
+### Modulo 3 - Simulacao de Monte Carlo
+Lei dos Grandes Numeros: a frequencia relativa converge para a probabilidade teorica.
+
+![Modulo 3 - LGN](imagens/modulo3-lgn.png)
+
+Teorema Central do Limite: a distribuicao das medias amostrais.
 
 ![Modulo 3 - TCL](imagens/modulo3-tcl.png)
 
+### Modulo 4 - Distribuicoes Teoricas
+Curvas teoricas sobrepostas ao histograma, com parametros estimados dos dados.
+
+![Modulo 4 - distribuicoes](imagens/modulo4-distribuicoes.png)
+
 ### Modulo 5 - Correlacao e Regressao
-Diagrama de dispersao, reta de minimos quadrados, R² e predicao interativa.
+Correlacao de Pearson, R² e a reta de minimos quadrados.
+
+![Modulo 5 - medidas](imagens/modulo5-medidas.png)
 
 ![Modulo 5 - regressao](imagens/modulo5-regressao.png)
+
+### Modulo 6 - As 3 descobertas
+Recalculadas ao vivo pela biblioteca a cada carregamento da pagina.
+
+![Modulo 6 - descobertas](imagens/modulo6-descobertas.png)
+
+### Os testes
+Os 38 testes comparando cada funcao propria com NumPy/SciPy.
+
+![Testes](imagens/testes-pytest.png)
 
 ## Arquivos do projeto
 
